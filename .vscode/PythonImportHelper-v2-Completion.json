@@ -1,5 +1,40 @@
 [
     {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
         "label": "inflection",
         "kind": 6,
         "isExtraImport": true,
@@ -95,11 +130,83 @@
         "documentation": {}
     },
     {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"Scripts\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir] + os.environ.get(\"PATH\", \"\").split(os.pathsep))\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"..\\\\Lib\\\\site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".apiRossmann.Scripts.activate_this",
+        "description": ".apiRossmann.Scripts.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".apiRossmann.Scripts.activate_this",
+        "documentation": {}
+    },
+    {
         "label": "Rossmann",
         "kind": 6,
         "importPath": "rossmann.Rossmann",
         "description": "rossmann.Rossmann",
-        "peekOfCode": "class Rossmann(object):\n    def __init__(self):\n        self.home_path = '/Users/55329/Documents/3.Repos/Rossmann-sales/'\n        self.competition_distance_scaler = pickle.load(open(self.home_path + 'parameter/competition_distance_scaler.pkl', 'rb'))\n        self.competition_time_month_scaler = pickle.load(open(self.home_path + 'parameter/competition_time month_scaler.pkl', 'rb'))\n        self.promo_time_month_scaler = pickle.load(open(self.home_path + 'parameter/promo_time_week_scaler.pkl', 'rb'))\n        self.year_scaler = pickle.load(open(self.home_path + 'parameter/year_scaler.pkl', 'rb'))\n        self.store_type_encoder = pickle.load(open(self.home_path + 'parameter/store_type_encoder.pkl', 'rb'))\n    def data_cleaning(self, df):\n        ## 1.1 RENAME COLUMNS",
+        "peekOfCode": "class Rossmann(object):\n    def __init__(self):\n        self.competition_distance_scaler = pickle.load(open('parameter/competition_distance_scaler.pkl', 'rb'))\n        self.competition_time_month_scaler = pickle.load(open('parameter/competition_time month_scaler.pkl', 'rb'))\n        self.promo_time_month_scaler = pickle.load(open('parameter/promo_time_week_scaler.pkl', 'rb'))\n        self.year_scaler = pickle.load(open('parameter/year_scaler.pkl', 'rb'))\n        self.store_type_encoder = pickle.load(open('parameter/store_type_encoder.pkl', 'rb'))\n    def data_cleaning(self, df):\n        ## 1.1 RENAME COLUMNS\n        cols_old = ['Store', 'DayOfWeek', 'Date', 'Open', 'Promo',",
         "detail": "rossmann.Rossmann",
         "documentation": {}
     },
@@ -117,7 +224,7 @@
         "kind": 5,
         "importPath": "handler",
         "description": "handler",
-        "peekOfCode": "model = pickle.load(open('C:/Users/55329/Documents/3.Repos/Rossmann-sales/model/model_xgb_tuned.pkl', 'rb'))\n# initialize API\napp = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas",
+        "peekOfCode": "model = pickle.load(open('..\\model\\model_xgb_tuned.pkl', 'rb'))\n# initialize API\napp = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas",
         "detail": "handler",
         "documentation": {}
     },

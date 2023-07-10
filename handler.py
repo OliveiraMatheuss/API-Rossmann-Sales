@@ -9,7 +9,7 @@ from rossmann.Rossmann import Rossmann
 
 # loading model
 
-model = pickle.load(open('C:/Users/55329/Documents/3.Repos/Rossmann-sales/model/model_xgb_tuned.pkl', 'rb'))
+model = pickle.load(open('..\model\model_xgb_tuned.pkl', 'rb'))
 
 # initialize API
 
