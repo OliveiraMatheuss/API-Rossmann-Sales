@@ -215,7 +215,7 @@
         "kind": 5,
         "importPath": "handler",
         "description": "handler",
-        "peekOfCode": "model = pickle.load(open('model/model_xgb_tuned.pkl', 'rb'))\n# initialize API\napp = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas",
+        "peekOfCode": "model = pickle.load(open('model/model_xgb_tuned.pkl', 'rb'))\n# initialize API\napp = Flask(__name__)\n@app.route('http://127.0.0.1:5000/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas",
         "detail": "handler",
         "documentation": {}
     },
@@ -224,7 +224,7 @@
         "kind": 5,
         "importPath": "handler",
         "description": "handler",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas\n            test_raw = pd.DataFrame( test_json, columns= test_json[0].keys())\n        # Instaciar classe Rosmann",
+        "peekOfCode": "app = Flask(__name__)\n@app.route('http://127.0.0.1:5000/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas\n            test_raw = pd.DataFrame( test_json, columns= test_json[0].keys())\n        # Instaciar classe Rosmann",
         "detail": "handler",
         "documentation": {}
     }
