@@ -9,47 +9,17 @@ import numpy as np
 
 class Rossmann(object):
     
-    """
-    Classe para realizar a previsão de vendas utilizando o modelo treinado da Rossmann.
-
-    Esta classe contém métodos para realizar a limpeza e engenharia de características dos dados,
-    preparar os dados para a previsão, e fazer a previsão de vendas usando o modelo treinado.
-
-    Atributos:
-        home_path (str): O caminho para o diretório raiz do projeto.
-        competition_distance_scaler (object): O objeto do scaler utilizado para escalonar a coluna 'CompetitionDistance'.
-        competition_time_month_scaler (object): O objeto do scaler utilizado para escalonar a coluna 'CompetitionTimeMonth'.
-        promo_time_month_scaler (object): O objeto do scaler utilizado para escalonar a coluna 'PromoTimeWeek'.
-        year_scaler (object): O objeto do scaler utilizado para escalonar a coluna 'Year'.
-        store_type_encoder (object): O objeto do encoder utilizado para codificar a coluna 'StoreType'.
-
-    Métodos:
-        data_cleaning(df): Realiza a limpeza dos dados no DataFrame df.
-        feature_engineering(df): Realiza a engenharia de características no DataFrame df.
-        data_preparation(df): Prepara os dados no DataFrame df para a previsão.
-        get_prediction(model, original_data, test_data): Realiza a previsão de vendas usando o modelo treinado.
-    """
     def __init__(self):
         
-        self.home_path = '/Users/55329/Documents/3.Repos/Rossmann-sales/'
-        self.competition_distance_scaler = pickle.load(open(self.home_path + 'parameter/competition_distance_scaler.pkl', 'rb'))
-        self.competition_time_month_scaler = pickle.load(open(self.home_path + 'parameter/competition_time month_scaler.pkl', 'rb'))
-        self.promo_time_month_scaler = pickle.load(open(self.home_path + 'parameter/promo_time_week_scaler.pkl', 'rb'))
-        self.year_scaler = pickle.load(open(self.home_path + 'parameter/year_scaler.pkl', 'rb'))
-        self.store_type_encoder = pickle.load(open(self.home_path + 'parameter/store_type_encoder.pkl', 'rb'))
+        self.competition_distance_scaler = pickle.load(open('parameter/competition_distance_scaler.pkl', 'rb'))
+        self.competition_time_month_scaler = pickle.load(open('parameter/competition_time month_scaler.pkl', 'rb'))
+        self.promo_time_month_scaler = pickle.load(open('parameter/promo_time_week_scaler.pkl', 'rb'))
+        self.year_scaler = pickle.load(open('parameter/year_scaler.pkl', 'rb'))
+        self.store_type_encoder = pickle.load(open('parameter/store_type_encoder.pkl', 'rb'))
         
         
         
     def data_cleaning(self, df):
-        """
-        Realiza a limpeza dos dados no DataFrame df.
-
-        Parâmetros:
-            df (pandas.DataFrame): O DataFrame contendo os dados a serem limpos.
-
-        Retorna:
-            pandas.DataFrame: O DataFrame com os dados limpos.
-        """
         
         ## 1.1 RENAME COLUMNS
         cols_old = ['Store', 'DayOfWeek', 'Date', 'Open', 'Promo',
@@ -109,16 +79,6 @@ class Rossmann(object):
         
     def feature_engineering(self, df):
         
-        """
-        Realiza a engenharia de características no DataFrame df.
-
-        Parâmetros:
-            df (pandas.DataFrame): O DataFrame contendo os dados a serem processados.
-
-        Retorna:
-            pandas.DataFrame: O DataFrame com as novas características adicionadas.
-        """
-        
         ### 2.4. Feature Engineering
         # year
         df['year'] = df['date'].dt.year
@@ -162,15 +122,6 @@ class Rossmann(object):
         return df
     
     def data_preparation(self, df):
-        """
-        Prepara os dados no DataFrame df para a previsão.
-
-        Parâmetros:
-            df (pandas.DataFrame): O DataFrame contendo os dados a serem preparados.
-
-        Retorna:
-            pandas.DataFrame: O DataFrame com os dados preparados para a previsão.
-        """
         
         ## 5.1 Rescaling
 
@@ -237,18 +188,6 @@ class Rossmann(object):
         return df[cols_select]
     
     def get_prediction(self, model, original_data, test_data):
-        
-        """
-        Realiza a previsão de vendas usando o modelo treinado.
-
-        Parâmetros:
-            model: O modelo treinado a ser utilizado para a previsão.
-            original_data (pandas.DataFrame): O DataFrame original com os dados de entrada.
-            test_data (pandas.DataFrame): O DataFrame contendo os dados preparados para a previsão.
-
-        Retorna:
-            str: Uma string contendo o DataFrame com as previsões de vendas em formato JSON.
-        """
         
         #prediction
         pred = model.predict(test_data)
