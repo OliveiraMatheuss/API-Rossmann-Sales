@@ -113,6 +113,15 @@
         "documentation": {}
     },
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "Rossmann",
         "importPath": "rossmann.Rossmann",
         "description": "rossmann.Rossmann",
@@ -197,7 +206,7 @@
         "kind": 6,
         "importPath": "rossmann.Rossmann",
         "description": "rossmann.Rossmann",
-        "peekOfCode": "class Rossmann(object):\n    def __init__(self):\n        self.competition_distance_scaler = pickle.load(open('parameter/competition_distance_scaler.pkl', 'rb'))\n        self.competition_time_month_scaler = pickle.load(open('parameter/competition_time month_scaler.pkl', 'rb'))\n        self.promo_time_month_scaler = pickle.load(open('parameter/promo_time_week_scaler.pkl', 'rb'))\n        self.year_scaler = pickle.load(open('parameter/year_scaler.pkl', 'rb'))\n        self.store_type_encoder = pickle.load(open('parameter/store_type_encoder.pkl', 'rb'))\n    def data_cleaning(self, df):\n        ## 1.1 RENAME COLUMNS\n        cols_old = ['Store', 'DayOfWeek', 'Date', 'Open', 'Promo',",
+        "peekOfCode": "class Rossmann(object):\n    \"\"\"\n    Classe para realizar a previsão de vendas utilizando o modelo treinado da Rossmann.\n    Esta classe contém métodos para realizar a limpeza e engenharia de características dos dados,\n    preparar os dados para a previsão, e fazer a previsão de vendas usando o modelo treinado.\n    Atributos:\n        home_path (str): O caminho para o diretório raiz do projeto.\n        competition_distance_scaler (object): O objeto do scaler utilizado para escalonar a coluna 'CompetitionDistance'.\n        competition_time_month_scaler (object): O objeto do scaler utilizado para escalonar a coluna 'CompetitionTimeMonth'.\n        promo_time_month_scaler (object): O objeto do scaler utilizado para escalonar a coluna 'PromoTimeWeek'.",
         "detail": "rossmann.Rossmann",
         "documentation": {}
     },
@@ -206,7 +215,7 @@
         "kind": 2,
         "importPath": "handler",
         "description": "handler",
-        "peekOfCode": "def rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas\n            test_raw = pd.DataFrame( test_json, columns= test_json()[0].keys())\n        # Instaciar classe Rosmann\n        pipeline = Rossmann()\n        # data cleaning",
+        "peekOfCode": "def rossmann_predict():\n    \"\"\"\n    Faz uma previsão de vendas utilizando o modelo treinado da classe Rossmann.\n    Essa função recebe um conjunto de dados de entrada no formato JSON, realiza a limpeza, engenharia de\n    características e preparação dos dados usando a classe Rossmann. Em seguida, utiliza o modelo treinado\n    para fazer a previsão de vendas.\n    Retorna:\n        pandas.DataFrame: Um DataFrame contendo as previsões de vendas para cada loja.\n    Exemplo:\n        >>> test_json = '{\"Store\": 1, \"DayOfWeek\": 3, \"Open\": 1, \"Promo\": 0, \"StateHoliday\": \"0\", ...}'",
         "detail": "handler",
         "documentation": {}
     },
@@ -215,7 +224,7 @@
         "kind": 5,
         "importPath": "handler",
         "description": "handler",
-        "peekOfCode": "model = pickle.load(open('model/model_xgb_tuned.pkl', 'rb'))\n# initialize API\napp = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['GET','POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas",
+        "peekOfCode": "model = pickle.load(open('C:/Users/55329/Documents/3.Repos/Rossmann-sales/model/model_xgb_tuned.pkl', 'rb'))\n# initialize API\napp = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    \"\"\"\n    Faz uma previsão de vendas utilizando o modelo treinado da classe Rossmann.\n    Essa função recebe um conjunto de dados de entrada no formato JSON, realiza a limpeza, engenharia de\n    características e preparação dos dados usando a classe Rossmann. Em seguida, utiliza o modelo treinado\n    para fazer a previsão de vendas.",
         "detail": "handler",
         "documentation": {}
     },
@@ -224,7 +233,7 @@
         "kind": 5,
         "importPath": "handler",
         "description": "handler",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['GET','POST'])\ndef rossmann_predict():\n    test_json = request.get_json()\n    if test_json:\n        if isinstance(test_json, dict): # Uma linha unica \n            test_raw = pd.DataFrame( test_json , index = [0])\n        else: # Multiplas linhas\n            test_raw = pd.DataFrame( test_json, columns= test_json()[0].keys())\n        # Instaciar classe Rosmann",
+        "peekOfCode": "app = Flask(__name__)\n@app.route('/rossmann/predict', methods = ['POST'])\ndef rossmann_predict():\n    \"\"\"\n    Faz uma previsão de vendas utilizando o modelo treinado da classe Rossmann.\n    Essa função recebe um conjunto de dados de entrada no formato JSON, realiza a limpeza, engenharia de\n    características e preparação dos dados usando a classe Rossmann. Em seguida, utiliza o modelo treinado\n    para fazer a previsão de vendas.\n    Retorna:\n        pandas.DataFrame: Um DataFrame contendo as previsões de vendas para cada loja.",
         "detail": "handler",
         "documentation": {}
     }
