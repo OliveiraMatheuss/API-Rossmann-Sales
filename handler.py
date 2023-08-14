@@ -15,7 +15,7 @@ model = pickle.load(open('model/model_xgb_tuned.pkl', 'rb'))
 
 app = Flask(__name__)
 
-@app.route('/rossmann/predict', methods = ['POST'])
+@app.route('/rossmann/predict', methods = ['GET','POST'])
 
 def rossmann_predict():
     test_json = request.get_json()
@@ -25,7 +25,7 @@ def rossmann_predict():
             test_raw = pd.DataFrame( test_json , index = [0])
             
         else: # Multiplas linhas
-            test_raw = pd.DataFrame( test_json, columns= test_json[0].keys())
+            test_raw = pd.DataFrame( test_json, columns= test_json()[0].keys())
             
         # Instaciar classe Rosmann
         pipeline = Rossmann()
