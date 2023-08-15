@@ -177,14 +177,16 @@ class Rossmann(object):
                 'competition_open_since_month',
                 'competition_open_since_year',
                 'promo2_since_week',
+                'promo2_since_year',
                 'competition_time_month',
                 'promo_time_week',
                 'day_of_week_sin',
                 'day_of_week_cos',
-                'month_cos',
-                'month_sin',
+                'day_cos',
                 'day_sin',
-                'day_cos']
+                'month_cos',
+                'month_sin'
+                            ]
         return df[cols_select]
     
     def get_prediction(self, model, original_data, test_data):

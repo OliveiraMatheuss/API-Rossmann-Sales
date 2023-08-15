@@ -5,6 +5,7 @@ import pickle
 import os
 import pandas as pd
 from rossmann.Rossmann import Rossmann
+import json
 
 
 # loading model
@@ -15,10 +16,11 @@ model = pickle.load(open('model/model_xgb_tuned.pkl', 'rb'))
 
 app = Flask(__name__)
 
-@app.route('/rossmann/predict', methods = ['POST'])
+@app.route('/rossmann/predict', methods = ['GET','POST'])
 
 def rossmann_predict():
     test_json = request.get_json()
+    test_json = json.loads(test_json)
     
     if test_json:
         if isinstance(test_json, dict): # Uma linha unica 
@@ -48,4 +50,4 @@ def rossmann_predict():
     
 if __name__ == '__main__':
     port = os.environ.get('PORT', 5000)
-    app.run( host = '0.0.0.0', port = port )
+    app.run( host = '0.0.0.0', port = port, debug=True )
